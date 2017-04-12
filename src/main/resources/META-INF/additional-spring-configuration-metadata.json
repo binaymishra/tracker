@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "tableAFile.path",
+    "type": "java.lang.String",
+    "description": "A description for 'tableAFile.path'"
+  },
+  {
+    "name": "tableBFile.path",
+    "type": "java.lang.String",
+    "description": "A description for 'tableBFile.path'"
+  },
+  {
+    "name": "tableCFile.path",
+    "type": "java.lang.String",
+    "description": "A description for 'tableCFile.path'"
+  }
+]}

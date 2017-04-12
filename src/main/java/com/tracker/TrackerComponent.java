@@ -8,11 +8,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TrackerComponent {
+	
+	@Value("${tableAFile.path}")
+	String tableAFile;
+	
+	@Value("${tableBFile.path}")
+	String tableBFile;
+	
+	@Value("${tableCFile.path}")
+	String tableCFile;
 	
 	@Autowired
 	ResourceLoader resourceLoader;
@@ -22,7 +32,7 @@ public class TrackerComponent {
 	 * @throws IOException
 	 */
 	public List<TableA> readFileTableA20120407() throws IOException{
-		File file = resourceLoader.getResource("classpath:TableA20120407.csv").getFile();
+		File file = resourceLoader.getResource(tableAFile).getFile();
 		return Files.lines(file.toPath(), Charset.forName("UTF-8"))
 			.skip(1)
 			.map(str -> {
@@ -37,7 +47,7 @@ public class TrackerComponent {
 	 * @throws IOException
 	 */
 	public List<TableB> readFileTableB20120409() throws IOException{
-		File file = resourceLoader.getResource("classpath:TableB20120409.csv").getFile();
+		File file = resourceLoader.getResource(tableBFile).getFile();
 		return Files.lines(file.toPath(), Charset.forName("UTF-8"))
 				.skip(1)
 				.map(str -> {
@@ -52,7 +62,7 @@ public class TrackerComponent {
 	 * @throws IOException
 	 */
 	public List<TableC> readFileTableC() throws IOException{
-		File file = resourceLoader.getResource("classpath:TableC.csv").getFile();
+		File file = resourceLoader.getResource(tableCFile).getFile();
 		return Files.lines(file.toPath(), Charset.forName("UTF-8"))
 				.skip(1)
 				.map(str ->{
