@@ -72,7 +72,6 @@ public class TrackerApplication{
 			.map(str ->{
 				String[] arr = str.split(COMMA);
 				return new TableC(arr[0], arr[3], arr[4], Double.valueOf(arr[1]), Double.valueOf(arr[2])); 
-			//arr[0], arr[3], arr[4], Double.valueOf(arr[1]), Double.valueOf(arr[2])
 			}).collect(Collectors.toList());
 			//Insert into table_c
 			trackerRepository.insertTableC(tableC);
