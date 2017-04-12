@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class TrackerComponent {
 	
+	private static final String COMMA = ",";
+	
 	@Value("${tableAFile.path}")
 	String tableAFile;
 	
@@ -36,7 +38,7 @@ public class TrackerComponent {
 		return Files.lines(file.toPath(), Charset.forName("UTF-8"))
 			.skip(1)
 			.map(str -> {
-				String[] arr = str.split(",");
+				String[] arr = str.split(COMMA);
 				return new TableA(arr[0], arr[1], arr[2], arr[3], Long.parseLong(arr[4]), Long.parseLong(arr[5]));
 			})
 			.collect(Collectors.toList());
@@ -51,7 +53,7 @@ public class TrackerComponent {
 		return Files.lines(file.toPath(), Charset.forName("UTF-8"))
 				.skip(1)
 				.map(str -> {
-					String[] arr = str.split(",");
+					String[] arr = str.split(COMMA);
 					return new TableB(arr[0], arr[1], arr[2], arr[3], Long.parseLong(arr[4]), Long.parseLong(arr[5]));
 				})
 				.collect(Collectors.toList());
@@ -66,7 +68,7 @@ public class TrackerComponent {
 		return Files.lines(file.toPath(), Charset.forName("UTF-8"))
 				.skip(1)
 				.map(str ->{
-					String[] arr = str.split(",");
+					String[] arr = str.split(COMMA);
 					return new TableC(arr[0], Double.valueOf(arr[1]), Double.valueOf(arr[2]), arr[3], arr[4]);
 				}).collect(Collectors.toList());
 				
