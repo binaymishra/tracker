@@ -31,7 +31,7 @@ public class TrackerRepository {
 	}
 	
 	@Autowired
-	TrackerComponent trackerComponent;
+	TrackerFileReadComponent trackerComponent;
 	
 	public void insertTableA() throws IOException{
 		List<TableA> tableA = trackerComponent.readFileTableA20120407();
